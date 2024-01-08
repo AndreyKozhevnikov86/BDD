@@ -1,7 +1,8 @@
 package ru.netology.web.data;
 
-import java.util.Random;
+import lombok.Value;
 
+import java.util.Random;
 
 public class DataHelper {
     private DataHelper() {
@@ -27,60 +28,24 @@ public class DataHelper {
         return new Random().nextInt(Math.abs(balance)) + 1;
     }
 
-    public static int generateInvalideAmount(int balance) {
-        return Math.abs(balance) + new Random().nextInt(1000);
+    public static int generateInvalidAmount(int balance) {
+        return Math.abs(balance) + new Random().nextInt(10_000);
     }
 
-
+    @Value
     public static class VerificationCode {
         String code;
-
-        public VerificationCode(String value) {
-            code = value;
-        }
-
-        public String getCode() {
-            return code;
-        }
-
     }
 
-
+    @Value
     public static class CardInfo {
         String cardNumber;
         String testId;
-
-        public CardInfo(String cardNumberValue, String testIdValue) {
-            cardNumber = cardNumberValue;
-            testId = testIdValue;
-        }
-
-        public String getCardNumber() {
-            return cardNumber;
-        }
-
-        public String getTestId() {
-            return testId;
-        }
-
     }
 
-
+    @Value
     public static class AuthInfo {
         String login;
         String password;
-
-        public AuthInfo(String loginValue, String passwordValue) {
-            login = loginValue;
-            password = passwordValue;
-        }
-
-        public String getLogin() {
-            return login;
-        }
-
-        public String getPassword() {
-            return password;
-        }
     }
 }
