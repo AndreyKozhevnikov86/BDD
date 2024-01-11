@@ -1,5 +1,6 @@
 package ru.netology.web.page;
 
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import ru.netology.web.data.DataHelper;
 
@@ -15,7 +16,7 @@ public class TransferPage {
     private final SelenideElement amountInput = $("[data-test-id='amount'] input");
     private final SelenideElement fromInput = $("[data-test-id='from'] input");
     private final SelenideElement transferHead = $(byText("Пополнение карты"));
-    private final SelenideElement errorMessage = $("[data-test-id='error-notification']");
+    private final SelenideElement errorMassage = $("[data-test-id='error-notification']");
 
     public TransferPage() {
         transferHead.shouldBe(visible);
@@ -32,8 +33,7 @@ public class TransferPage {
         transferButton.click();
     }
 
-    public void finderrorMessage(String expectedText) {
-        errorMessage.shouldHave(text(expectedText), Duration.ofSeconds(15)).shouldBe(visible);
-
+    public void findErrorMessage(String expectadText) {
+        errorMassage.shouldHave(Condition.text(expectadText), Duration.ofSeconds(15)).shouldBe(visible);
     }
 }
